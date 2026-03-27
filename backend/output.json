@@ -1,0 +1,74 @@
+{
+  "summary": {
+    "avg_coverage_before": 0.5241,
+    "avg_coverage_after": 0.604,
+    "avg_improvement": 0.0798
+  },
+  "priority_bins": [
+    {
+      "bin_name": "BIN_018",
+      "coverage_before": 0.2654,
+      "coverage_gap": 0.7346,
+      "bin_weight": 10.0,
+      "weighted_priority": 7.3462
+    },
+    {
+      "bin_name": "BIN_029",
+      "coverage_before": 0.2991,
+      "coverage_gap": 0.7009,
+      "bin_weight": 6.01,
+      "weighted_priority": 4.2126
+    },
+    {
+      "bin_name": "BIN_026",
+      "coverage_before": 0.331,
+      "coverage_gap": 0.669,
+      "bin_weight": 5.7,
+      "weighted_priority": 3.8134
+    }
+  ],
+  "recommendations": [
+    {
+      "bin_name": "BIN_018",
+      "coverage_before": 0.2654,
+      "weighted_priority": 7.3462,
+      "recommended_seed": "CACHE_SEED_028",
+      "predicted_improvement": 0.2015,
+      "predicted_coverage_after": 0.4669,
+      "confidence": "High"
+    },
+    {
+      "bin_name": "BIN_029",
+      "coverage_before": 0.2991,
+      "weighted_priority": 4.2126,
+      "recommended_seed": "CACHE_SEED_004",
+      "predicted_improvement": 0.151,
+      "predicted_coverage_after": 0.45,
+      "confidence": "High"
+    },
+    {
+      "bin_name": "BIN_026",
+      "coverage_before": 0.331,
+      "weighted_priority": 3.8134,
+      "recommended_seed": "CACHE_SEED_004",
+      "predicted_improvement": 0.1832,
+      "predicted_coverage_after": 0.5142,
+      "confidence": "High"
+    }
+  ],
+  "top_seeds": [
+    {
+      "seed": "MEMORY_SEED_021",
+      "avg_improvement": 0.0898
+    },
+    {
+      "seed": "CACHE_SEED_020",
+      "avg_improvement": 0.131
+    }
+  ],
+  "next_best_action": {
+    "bin": "BIN_018",
+    "seed": "CACHE_SEED_028",
+    "expected_gain": 0.2015
+  }
+}
