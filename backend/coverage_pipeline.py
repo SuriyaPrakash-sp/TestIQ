@@ -7,20 +7,20 @@ Schema-native pipeline for:
 
 Column semantics
 ────────────────
-  Seed             – unique seed identifier
-  Bin_Name         – coverage bin name / ID
-  Hits             – times this bin was successfully triggered in simulation
-  Total            – total simulation attempts for this bin
-  Coverage_Before  – hit-rate before seeding  (≈ Hits / Times_Executed)
-  Coverage_After   – hit-rate after seeding
-  Bin_Weight       – business importance / criticality of this bin (higher = more critical)
-  Times_Executed   – how many times this seed was attempted on this bin
+  Seed             - unique seed identifier
+  Bin_Name         - coverage bin name / ID
+  Hits             - times this bin was successfully triggered in simulation
+  Total            - total simulation attempts for this bin
+  Coverage_Before  - hit-rate before seeding  (≈ Hits / Times_Executed)
+  Coverage_After   - hit-rate after seeding
+  Bin_Weight       - business importance / criticality of this bin (higher = more critical)
+  Times_Executed   - how many times this seed was attempted on this bin
 
 Derived critical metrics
 ────────────────────────
-  Improvement          = Coverage_After − Coverage_Before
-  Coverage_Gap         = 1 − Coverage_Before
-  Weighted_Priority    = Coverage_Gap × Bin_Weight          ← drives ranking
+  Improvement          = Coverage_After - Coverage_Before
+  Coverage_Gap         = 1 - Coverage_Before
+  Weighted_Priority    = Coverage_Gap * Bin_Weight          ← drives ranking
   Hit_Rate_Consistency = Hits / Times_Executed              ← validates Coverage_Before
   Execution_Efficiency = Improvement / Times_Executed       ← improvement per attempt
 
@@ -36,7 +36,6 @@ Usage
 Requirements
 ────────────
   pip install scikit-learn pandas numpy scipy xgboost
-  (xgboost optional → falls back to GradientBoostingRegressor)
 """
 
 from __future__ import annotations
@@ -970,6 +969,8 @@ Examples
         help="Path to CSV (or Excel/JSON/Parquet). Omit to use built-in sample data.")
     parser.add_argument("--output",    "-o", default=None,
         help="Save full results as JSON to this path.")
+    parser.add_argument("--frontend-output", default=None,
+        help="Save compact frontend JSON to this path (default: project root ./data.json).")
     parser.add_argument("--bin",       "-b", nargs="*",
         help="Specific Bin_Name values to recommend for.")
     parser.add_argument("--top-seeds", "-t", type=int, default=TOP_N_SEEDS,
@@ -1011,6 +1012,13 @@ Examples
             else:
                 json.dump(asdict(result), fh, indent=2, default=str)
         log.info("Results saved → %s", out)
+
+    # Write direct frontend JSON for index.html load path
+    frontend_path = Path(args.frontend_output) if args.frontend_output else Path(__file__).resolve().parents[2] / "data.json"
+    frontend_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(frontend_path, "w", encoding="utf-8") as fh:
+        json.dump(generate_compact_output(result), fh, indent=2)
+    log.info("Frontend data JSON saved → %s", frontend_path)
 
     return result
 

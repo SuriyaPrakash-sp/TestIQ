@@ -1,0 +1,74 @@
+{
+  "summary": {
+    "avg_coverage_before": 0.4063,
+    "avg_coverage_after": 0.4967,
+    "avg_improvement": 0.0904
+  },
+  "priority_bins": [
+    {
+      "bin_name": "REG_READ",
+      "coverage_before": 0.3617,
+      "coverage_gap": 0.6383,
+      "bin_weight": 0.9375,
+      "weighted_priority": 0.5986
+    },
+    {
+      "bin_name": "NOP",
+      "coverage_before": 0.3763,
+      "coverage_gap": 0.6237,
+      "bin_weight": 0.9567,
+      "weighted_priority": 0.5958
+    },
+    {
+      "bin_name": "ALU_OP",
+      "coverage_before": 0.3457,
+      "coverage_gap": 0.6543,
+      "bin_weight": 0.8618,
+      "weighted_priority": 0.563
+    }
+  ],
+  "recommendations": [
+    {
+      "bin_name": "REG_READ",
+      "coverage_before": 0.3617,
+      "weighted_priority": 0.5985,
+      "recommended_seed": "1924",
+      "predicted_improvement": 0.0973,
+      "predicted_coverage_after": 0.459,
+      "confidence": "High"
+    },
+    {
+      "bin_name": "NOP",
+      "coverage_before": 0.3763,
+      "weighted_priority": 0.5967,
+      "recommended_seed": "4112",
+      "predicted_improvement": 0.1111,
+      "predicted_coverage_after": 0.4875,
+      "confidence": "High"
+    },
+    {
+      "bin_name": "ALU_OP",
+      "coverage_before": 0.3457,
+      "weighted_priority": 0.5639,
+      "recommended_seed": "509",
+      "predicted_improvement": 0.0879,
+      "predicted_coverage_after": 0.4336,
+      "confidence": "High"
+    }
+  ],
+  "top_seeds": [
+    {
+      "seed": "1924",
+      "avg_improvement": 0.1047
+    },
+    {
+      "seed": "9774",
+      "avg_improvement": 0.0957
+    }
+  ],
+  "next_best_action": {
+    "bin": "REG_READ",
+    "seed": "1924",
+    "expected_gain": 0.0973
+  }
+}
